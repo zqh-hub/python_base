@@ -1,38 +1,3 @@
-# list(): 可将任何序列（而不仅仅是字符串）作为list的参数
-print(list("hello"))  # ['h', 'e', 'l', 'l', 'o']
-# ''.join(list):将字符列表转化为字符串
-print("".join(['h', 'e', 'l', 'l', 'o']))  # hello
-
-# 赋值
-x = [1, 2, 1]
-# 修改
-x[1] = 1
-print(x)
-# 删除元素
-y = [3, 4, 5]
-del y[2]
-print(y)
-
-# 切片赋值
-name = list("hello")
-name[0:3] = "ggggg"
-print(name)
-# 切片插入新值
-n = [1, 2, 3]
-n[1:1] = [5, 6, 7]  # [1, 5, 6, 7, 2, 3]
-print(n)
-
-# 切片删除值
-a = [1, 2, 3, 4]
-a[1:3] = []
-print(a)  # [1, 4]
-
-# 步长
-b = [1, 2, 3, 4, 5, 6, 7, 8]
-b[2:5:2] = [0, 0]
-print(b)
-
-# ---------------------------------- 列表方式 ----------------------------------
 # 1、append(obj):追加到列表末尾
 lst = [1, 2, 3]
 lst.append(4)
@@ -87,9 +52,50 @@ print(i)
 # 7、lst.insert(index,org):将org插入到lst的index位置
 a = ["coco", "jojo", "coco"]
 a.insert(2, "gogo")
-# a.index(5, "jojo")   超过范围，报错TypeError: slice indices must be integers or have an __index__ method
+# a.insert(5, "jojo")   超过范围，报错TypeError: slice indices must be integers or have an __index__ method
 print(a)
 # 通过切片实现insert
 a = ["coco", "jojo", "coco"]
 a[2:2] = ["gogo"]
 print(a)
+
+# 8、pop([index]):从列表中删除指定下标的元素，默认删除最后一个，并返回被删除的元素
+x = ["jojo", "coco", "gogo"]
+res = x.pop()
+print(x, res)
+y = ["jojo", "coco", "gogo"]
+y.pop(1)
+print(y)
+
+# 练习，通过append 与 pop实现栈的后进先出
+a = [1, 2, 3]
+res = a.pop()  # 最后的弹出去
+a.append(res)  # 添加到末尾
+print(a)
+
+# 9、lst.remove(org)：删除指定元素(第一个出现的)。就地修改且不返回值
+a = ["1", "2", "3", "1", "2"]
+a.remove("1")
+print(a)  # ['2', '3', '1', '2']
+
+# 10、reverse()：相反的顺序。就地修改且不返回值
+a = ["1", "2", "3"]
+a.reverse()
+print(a)
+# 拓展：reversed(seq):这个函数不返回列表，而是返回一个迭代器
+a = ["1", "2", "3"]
+res = list(reversed(a))
+print(res)
+
+# 11、lst.sort([reverse]):就地排序,对原列表进行修改，使其元素按顺序排列，而不是返回排序后的列表的副本
+a = [3, 1, 5, 4, 1, 2]
+a.sort(reverse=True)  # [1, 1, 2, 3, 4, 5]
+a.sort(reverse=True)  # [5, 4, 3, 2, 1, 1]
+print(a)
+
+# 为实现排序可返回，可使用sorted(seq,[reverse])
+a = [3, 1, 5, 4, 1, 2]
+s = sorted(a)  # [1, 1, 2, 3, 4, 5]
+r = sorted(a, reverse=True)  # [5, 4, 3, 2, 1, 1]
+print(s)
+print(r)
