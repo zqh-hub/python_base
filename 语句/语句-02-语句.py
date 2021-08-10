@@ -32,7 +32,7 @@ res = [1, 2] < [3, 4]
 # 断言：assert 条件,解释
 
 age = 12
-assert 1 < age < 11, "age 不在范围内"
+assert 1 < age < 14, "age 不在范围内"
 print(age)
 
 # 布尔运算符
@@ -41,6 +41,21 @@ and
 not
 or
 """
+
+# zip()：将多个序列组合在一起，返回可迭代对象
+names = ["gogo", "coco", "soso"]
+ages = [12, 34, 23]
+height = [123, 323, 123]
+print(list(zip(names, ages, height)))  # [('gogo', 12, 123), ('coco', 34, 323), ('soso', 23, 123)]
+
+for name, age in zip(names, ages):
+    print(name, age)
+
+'''
+gogo 12
+coco 34
+soso 23
+'''
 
 # enumerate(seq):返回key-value
 strings = ["python", "hello"]
