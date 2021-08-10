@@ -41,3 +41,47 @@ and
 not
 or
 """
+
+# enumerate(seq):返回key-value
+strings = ["python", "hello"]
+for index, s in enumerate(strings):
+    if "python" in s:
+        strings[index] = "[N]"
+
+print(strings)
+
+# 推导式
+res = [x for x in range(10)]
+print(res)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# 等价于：
+res = []
+for x in range(10):
+    res.append(x)
+print(res)
+
+res = [x for x in range(10) if x % 2 == 0]
+print(res)  # [0, 2, 4, 6, 8]
+# 等价于：
+res = []
+for x in range(10):
+    if x % 2 == 0:
+        res.append(x)
+print(res)  # [0, 2, 4, 6, 8]
+
+res = [(x, y) for x in range(3) for y in range(3)]
+print(res)  # [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+
+# 等价：
+res = []
+for x in range(3):
+    for y in range(3):
+        res.append((x, y))
+print(res)  # [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+
+# exec
+exec("print('hello')")
+
+# eval():
+res = eval("12")
+eval("print('hello')")
+print(res)
