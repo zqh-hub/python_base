@@ -46,3 +46,40 @@ class B:
 
 b = B()
 print(callable(b))  # True
+
+# 函数外与函数内的变量赋值影响
+# 当函数里的变量是字符等不可变类型时，局部变量复制为新值时，那么局部变量与外边的变量已经不再有联系，分别指向不同的值
+s = "python"
+def str_change(ss):
+    ss = "java"
+print(s)
+
+# 类型于：
+s = "python"
+ss = s
+ss = "java"
+print(s)
+
+# 当函数里的变量是列表等可变类型时，局部变量仅仅时进行修改里面的元素操作，不会改变这两个变量的指向
+def change(n):
+    n[0] = "2"
+
+ns = ["1", "2"]
+change(ns)
+print(ns)
+
+# 类似于：
+ns = ["1", "2"]
+nn = ns
+nn[0] = "2"
+print(ns)
+
+# 为了解决可变类型出现的这种情况
+ns = ["1", "2"]
+nn = ns[:]  # ns与nn是相等(==)但不同(is)的列表
+
+
+def change(n):
+    n[0] = "2"
+change(nn)
+print(ns)  # 没有影响
